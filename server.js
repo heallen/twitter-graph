@@ -4,14 +4,16 @@ const port = 3001
 var cors = require('cors')
 const bodyParser = require('body-parser');
 
+const { scrapeTwitter } = require('./scrapeTwitter');
+
 app.use(bodyParser.json());
 app.use(cors())
 // one endpoint to do all the computation (i.e. build graph, run pagerank)
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   // req.body.handleList contains list of handles as strings
-  console.log(req.body.handleList);
+  const graph = await scrapeTwitter(req.body.handleList);
   res.send(JSON.stringify({
-    'heelo': 'Hello World!'
+    graph: graph,
   }));
 });
 

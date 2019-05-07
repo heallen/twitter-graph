@@ -17,7 +17,7 @@ class VizGraph extends React.Component {
   getShortestPath = () => {
     const source = document.querySelector('#source').value;
     const target = document.querySelector('#target').value;
-    if (!source in this.props.graph || !source in this.props.graph) {
+    if (!(source in this.props.graph) || !(source in this.props.graph)) {
       this.setState({
         shortestPath: ['No path'],
       })

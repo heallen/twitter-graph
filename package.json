@@ -10,7 +10,8 @@
     "react": "^16.8.6",
     "react-d3-graph": "^2.0.2",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "scripts": {
     "start": "react-scripts start",

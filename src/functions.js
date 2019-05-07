@@ -2,7 +2,7 @@ let Dequeue = require('dequeue');
 
 // returns sequence of nodes on shortest path from u to v in the given graph
 export function shortestPath(graph, u, v) {
-  if (u == v) { return [u]; }
+  if (u === v) { return [u]; }
   let parents = {};
   let discovered = new Set();
   let queue = new Dequeue();
@@ -17,7 +17,7 @@ export function shortestPath(graph, u, v) {
           parents[b] = a;
           discovered.add(b);
           queue.push(b);
-          if (b == v) { break; }
+          if (b === v) { break; }
         }
       }
     }
@@ -25,21 +25,13 @@ export function shortestPath(graph, u, v) {
   if (!(v in parents)) { return null; }
   let result = []
   let curr = v;
-  while (curr in parents && curr != u) {
+  while (curr in parents && curr !== u) {
     result.push(curr);
     curr = parents[curr];
   }
   result.push(u);
   result.reverse();
   return result;
-}
-
-// shortest path test
-let graph = {
-  'one': ['two', 'three'],
-  'two': [],
-  'three': ['two', 'four'],
-  'four': ['three', 'two']
 }
 
 // given (N x 1) vector, returns L2 norm
@@ -50,9 +42,6 @@ function vl2norm(v) {
   }
   return Math.sqrt(sum);
 }
-
-// test vl2norm
-let v = [[2], [7], [1], [3]];
 
 // given two (N x 1) vectors, subtracts second from first
 function vsubtract(v1, v2) {
@@ -119,7 +108,7 @@ function transitionMatrix(graph) {
     } else {
       let value = 1 / (N - 1);
       for (let neighbor in graph) {
-        if (neighbor != name) {
+        if (neighbor !== name) {
           M[name2id[neighbor]][name2id[name]] = value;
         }
       }
@@ -146,12 +135,4 @@ export function pageRank(graph, eps = 0.0000001) {
     ans[id2name[i]] = v[i];
   }
   return ans;
-}
-
-function indegrees(graph) {
-  let indegs = {};
-  for (const node in graph) {
-    indegs[node] = graph[node].length
-  }
-  return indegs;
 }
