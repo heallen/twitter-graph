@@ -1,0 +1,4 @@
+{
+  "nodes": [{ "id": "Harry", "size": 300, "color": "red" }, { "id": "Sally", "size": 500 }, { "id": "Alice", "size": 200 }],
+  "links": [{ "source": "Harry", "target": "Sally"}, { "source": "Harry", "target": "Alice" }, { "source": "Sally", "target": "Harry" }]
+}
